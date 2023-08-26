@@ -1,7 +1,7 @@
 const timeEl = document.querySelector('.time');
 const mainEl = document.getElementById('bomb');
 
-let secondsLeft = 3
+// let secondsLeft = 3
 
 function setTime() {
     const timerInterval = setInterval(function(){
