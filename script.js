@@ -5,8 +5,11 @@ const startButton = document.getElementById('startButton');
 const questionContainer =document.getElementById('questionContainer');
 const questionEl = document.getElementById('question');
 const answerButtons = document.querySelectorAll('#questionContainer button');
+const quizTitle = document.getElementById('quizTitle')
+const quizDescription = document.getElementById('quizDescription')
 
-// let secondsLeft = 3
+
+ let secondsLeft = 3
 
 function setTime() {
     const timerInterval = setInterval(function(){
@@ -59,6 +62,8 @@ startButton.addEventListener('click',startQuiz);
 function startQuiz(){
     startButton.classList.add('hidden');
     questionContainer.classList.remove('hidden');
+    quizDescription.classList.add('hidden');
+    quizTitle.classList.add('hidden');
     setTime();
     showQuestion(questions[currentQuestionIndex]);
 }
