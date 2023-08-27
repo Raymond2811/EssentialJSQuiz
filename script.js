@@ -54,6 +54,46 @@ const questions  = [
         ]
 
     },
+
+    {
+        question:"why is ....",
+        answers:[
+            {text:'bnm', correct:false},
+            {text:'hjk', correct:false},
+            {text:'tgb', correct:true},
+            {text:'plk', correct:false},
+        ]
+    },
+
+    {
+        question:"why is ....",
+        answers:[
+            {text:'wsz', correct:false},
+            {text:'cvg', correct:false},
+            {text:'cvb', correct:false},
+            {text:'qsd', correct:true},
+        ]
+    },
+
+    {
+        question:"why is ....",
+        answers:[
+            {text:'qwe', correct:false},
+            {text:'edc', correct:false},
+            {text:'lkn', correct:true},
+            {text:'vhp', correct:false},
+        ]
+    },
+
+    {
+        question:"why is ....",
+        answers:[
+            {text:'gyh', correct:true},
+            {text:'loi', correct:false},
+            {text:'bgv', correct:false},
+            {text:'mjn', correct:false},
+        ]
+    },
     //future questions
 ];
 
