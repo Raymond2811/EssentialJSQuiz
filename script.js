@@ -14,7 +14,7 @@ const quizDescription = document.getElementById('quizDescription')
 function setTime() {
     const timerInterval = setInterval(function(){
         secondsLeft--;
-        timeEl.textContent = secondsLeft;
+        timeEl.textContent = 'Time:' + secondsLeft;
 
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
