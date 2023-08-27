@@ -1,6 +1,11 @@
 const timeEl = document.querySelector('.time');
 const mainEl = document.getElementById('bomb');
 
+const startButton = document.getElementById('startButton');
+const questionContainer =document.getElementById('questionContainer');
+const questionEl = document.getElementById('question');
+const answerButtons = document.querySelectorAll('#questionContainer button');
+
 // let secondsLeft = 3
 
 function setTime() {
@@ -32,5 +37,39 @@ function showExplosion() {
 function removeAllElements() {
     document.body.innerHTML = '';
 }
+ 
+let currentQuestionIndex = 0;
 
-setTime();
+const questions  = [
+    {
+        question: "what is....",
+        answers:[
+            {text: 'adf', correct:true},
+            {text: 'jhg', correct:false},
+            {text: 'poi', correct:false},
+            {text: 'qwe', correct:false},
+        ]
+
+    },
+    //future questions
+];
+
+startButton.addEventListener('click',startQuiz);
+
+function startQuiz(){
+    startButton.classList.add('hidden');
+    questionContainer.classList.remove('hidden');
+    setTime();
+    showQuestion(questions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+    questionEl.textContent = question.question;
+    answerButtons.forEach(function(button,index) {
+        button.textContent = question.answers[index].text;
+        button.addEventListener('click',function(){
+            selectAnswer(question.answers[index]);
+        });
+    });
+}
+
