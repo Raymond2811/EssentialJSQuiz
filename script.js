@@ -1,15 +1,16 @@
 const timeEl = document.querySelector('.time');
 const mainEl = document.getElementById('bomb');
-
 const startButton = document.getElementById('startButton');
 const questionContainer =document.getElementById('questionContainer');
 const questionEl = document.getElementById('question');
 const answerButtons = document.querySelectorAll('#questionContainer button');
-const quizTitle = document.getElementById('quizTitle')
-const quizDescription = document.getElementById('quizDescription')
-
+const quizTitle = document.getElementById('quizTitle');
+const quizDescription = document.getElementById('quizDescription');
+const feedbackContainer = document.getElementById('feedbackContainer');
+const feedbackText = document.getElementById('feedbackText');
 
  let secondsLeft = 80
+let answerIncorrectly = false;
 
 function setTime() {
     const timerInterval = setInterval(function(){
@@ -118,13 +119,27 @@ function showQuestion(question) {
 }
 
 function selectAnswer(answer) {
+    feedbackContainer.classList.remove('hidden');
     if(answer.correct){
+        feedbackText.textContent = 'Correct!';
         currentQuestionIndex++;
         if (currentQuestionIndex < questions.length) {
+            setTimeout(function() {
             showQuestion(questions[currentQuestionIndex]);
+            feedbackContainer.classList.add('hidden');
+        },1000);
         } else {
         }
     } else {
-        secondsLeft -= 10;
-    }
+        if (!answerIncorrectly) {
+            feedbackText.textContent = 'Wrong! -10 seconds';
+            secondsLeft -= 10;
+            answerIncorrectly = true;
+            setTimeout(function() {
+                showQuestion(questions[currentQuestionIndex]);
+                feedbackContainer.classList.add('hidden');
+                answerIncorrectly = false;
+            },1000);
+        }
+    }   
 }
