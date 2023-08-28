@@ -9,7 +9,7 @@ const quizTitle = document.getElementById('quizTitle')
 const quizDescription = document.getElementById('quizDescription')
 
 
- let secondsLeft = 3
+ let secondsLeft = 9999
 
 function setTime() {
     const timerInterval = setInterval(function(){
@@ -94,7 +94,6 @@ const questions  = [
             {text:'mjn', correct:false},
         ]
     },
-    //future questions
 ];
 
 startButton.addEventListener('click',startQuiz);
@@ -118,3 +117,15 @@ function showQuestion(question) {
     });
 }
 
+function selectAnswer(answer) {
+    if(answer.correct){
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            showQuestion(questions[currentQuestionIndex])
+        }else{
+
+        }
+    }else{
+
+    }
+}
