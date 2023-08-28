@@ -9,14 +9,14 @@ const quizTitle = document.getElementById('quizTitle')
 const quizDescription = document.getElementById('quizDescription')
 
 
- let secondsLeft = 9999
+ let secondsLeft = 80
 
 function setTime() {
     const timerInterval = setInterval(function(){
         secondsLeft--;
         timeEl.textContent = 'Time:' + secondsLeft;
 
-        if(secondsLeft === 0) {
+        if(secondsLeft <= 0) {
             clearInterval(timerInterval);
             showExplosion();
         }
@@ -121,11 +121,10 @@ function selectAnswer(answer) {
     if(answer.correct){
         currentQuestionIndex++;
         if (currentQuestionIndex < questions.length) {
-            showQuestion(questions[currentQuestionIndex])
-        }else{
-
+            showQuestion(questions[currentQuestionIndex]);
+        } else {
         }
-    }else{
-
+    } else {
+        secondsLeft -= 10;
     }
 }
