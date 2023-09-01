@@ -77,12 +77,18 @@ function startQuiz() {
 
 function startTimer() {
     timerInterval = setInterval(function() {
-      timeLeft--;
+     timeLeft--;
   
     if (timeLeft <= 0) {
     showExplosionAndEndQuiz();
     }
+    updateTimerDisplay();
     }, 1000);
+}
+
+function updateTimerDisplay() {
+    const timerValueElement = document.getElementById("timerValue");
+    timerValueElement.textContent = timeLeft;
 }
 
 function showQuestion(){
@@ -102,7 +108,7 @@ function showQuestion(){
             return function() {
             checkAnswer(clickIndex);
             };
-        }(index)); // Passing the index value using a closure
+        }(index));
       
         choiceItem.appendChild(choiceButton);
         choicesElement.appendChild(choiceItem);
@@ -113,21 +119,44 @@ function showQuestion(){
     }
 }
 
-  function checkAnswer(){
+function checkAnswer(selectedIndex){
+    const question = questions[currentQuestionIndex];
+    if (selectedIndex === question.answer) {
+      score++;
+      currentQuestionIndex++;
+      showQuestion();
+      showFeedback("Correct!", "green");
+    } else{ 
+        timeLeft-= 10;
+        const feedbackElement = document.createElement("p");
+        feedbackElement.textContent = "Wrong! -10 secs";
+        feedbackElement.style.color = "red";
 
-  }
+        choicesElement.appendChild(feedbackElement);
+        setTimeout(function() {
+            feedbackElement.remove();
+        },1000)
+    }
+}
 
-  function showFeedback(){
+function showFeedback(){
+    const feedbackElement = document.createElement("p");
+    feedbackElement.textContent = message;
+    feedbackElement.style.color = color;
 
-  }
+    choicesElement.appendChild(feedbackElement);
+    setTimeout(function() {
+        feedbackElement.remove();
+    },1000);
+}
 
-  function showExplosionAndEndQuiz(){
+function showExplosionAndEndQuiz(){
 
-  }
+}
 
-  function endQuiz() {
+function endQuiz() {
     clearInterval(timerInterval);
     quizContainer.style.display = "none";
     endContainer.style.display = "block";
     scoreElement.textContent = score;
-  }
+}
