@@ -2,50 +2,50 @@ const questions = [
     {
       question: "What does the term 'Hoisting' refer to in JavaScript?",
       choices: [
-        "a) Lifting heavy objects with JavaScript", 
-        "b) The process of moving all variable and function declarations to the top of their scope before code execution", 
-        "c) Creating a virtual structure to organize your code",
-        "d) Animating elements on a webpage",],
+        "A) Lifting heavy objects with JavaScript", 
+        "B) The process of moving all variable and function declarations to the top of their scope before code execution", 
+        "C) Creating a virtual structure to organize your code",
+        "D) Animating elements on a webpage",],
       answer: 1
     },
     
     {
         question: "Which of the following is not a JavaScript data type?",
-        choices: ["String", "Boolean", "Undefined", "Float"],
+        choices: ["A) String", "B) Boolean", "C) Undefined", "D) Float"],
         answer: 3
     },
     {
         question: "Which keyword is used to declare a variable in JavaScript?",
         choices: [
-          "a) new",
-          "b) let",
-          "c) var",
-          "d) const"
+          "A) new",
+          "B) let",
+          "C) var",
+          "D) const"
         ],
         answer: 1
     },
     {
         question: "What is the purpose of a callback function in JavaScript?",
         choices: [
-          "a) To stop the execution of the program",
-          "b) To provide a way to style HTML elements",
-          "c) To handle asynchronous operations and execute code after a certain task is completed",
-          "d) To define CSS rules for a webpage"
+          "A) To stop the execution of the program",
+          "B) To provide a way to style HTML elements",
+          "C) To handle asynchronous operations and execute code after a certain task is completed",
+          "D) To define CSS rules for a webpage"
         ],
         answer: 2
     },
     {
         question: "Which operator is used to concatenate strings in JavaScript?",
-        choices: ["+", "&", "-", "*"],
+        choices: ["A) +", "B) &", "C) -", "D) *"],
         answer: 0
     },
     {
         question: "What is the difference between 'null' and 'undefined' in JavaScript?",
         choices: [
-            "a) They are interchangeable and can be used interchangeably", 
-            "b) 'null' represents an uninitialized variable, while 'undefined' indicates the absence of a value or an uninitialized variable", 
-            "c) 'undefined' represents an empty string, while 'null' indicates a missing function", 
-            "d) 'null' is used for mathematical calculations, while 'undefined' is used for logical operations"
+            "A) They are interchangeable and can be used interchangeably", 
+            "B) 'null' represents an uninitialized variable, while 'undefined' indicates the absence of a value or an uninitialized variable", 
+            "C) 'undefined' represents an empty string, while 'null' indicates a missing function", 
+            "D) 'null' is used for mathematical calculations, while 'undefined' is used for logical operations"
         ],
         answer: 1
     }
