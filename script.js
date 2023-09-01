@@ -64,6 +64,7 @@ const quizContent = document.getElementById("quizContent");
 let timeLeft = 60;
 let timerInterval;
 let currentQuestionIndex = 0;
+let score = 94;
 
 startBtn.addEventListener("click", startQuiz);
 
@@ -168,4 +169,36 @@ function endQuiz() {
     quizContainer.style.display = "none";
     endContainer.style.display = "block";
     scoreElement.textContent = score;
+}
+
+submitBtn.addEventListener("click", function() {
+    const initials = initialsElement.value;
+    if (initials) {
+        saveHighScore(initials, score);
+        initialsElement.value = "";
+        window.location.href = "highscores.html";
+        showHighScores();
+    }
+});
+
+const viewHighScoresLink = document.getElementById("viewHighScores");
+viewHighScoresLink.addEventListener("click", function() {
+  showHighScores();
+});
+
+function saveHighScore(initials, score) {
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push({ initials: initials, score: score });
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+}
+
+function showHighScores() {
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    const highScoresContainer = document.getElementById("highScoresContainer");
+    highScoresContainer.innerHTML = "";
+    highScores.forEach(function(scoreData) {
+        const scoreItem = document.createElement("div");
+        scoreItem.textContent = `${scoreData.initials}: ${scoreData.score}`;
+        highScoresContainer.appendChild(scoreItem);
+    });
 }
