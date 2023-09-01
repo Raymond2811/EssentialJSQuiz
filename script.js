@@ -49,7 +49,6 @@ const questions = [
         ],
         answer: 1
     }
-
 ];
 
 const startBtn = document.getElementById("startBtn");
@@ -74,21 +73,45 @@ function startQuiz() {
     quizContainer.style.display = "block";
     startTimer();
     showQuestion();
-  }
+}
 
-  function startTimer() {
+function startTimer() {
     timerInterval = setInterval(function() {
       timeLeft--;
   
-      if (timeLeft <= 0) {
-        showExplosionAndEndQuiz();
-      }
+    if (timeLeft <= 0) {
+    showExplosionAndEndQuiz();
+    }
     }, 1000);
-  }
+}
 
-  function showQuestion(){
+function showQuestion(){
+    if (currentQuestionIndex < questions.length) {
+        const question = questions[currentQuestionIndex];
+        questionElement.textContent = question.question;
+        choicesElement.innerHTML = "";
 
-  }
+    for (let index = 0; index < question.choices.length; index++) {
+        const choice = question.choices[index];
+      
+        const choiceItem = document.createElement("li");
+        const choiceButton = document.createElement("button");
+      
+        choiceButton.textContent = choice;
+        choiceButton.addEventListener("click", function(clickIndex) {
+            return function() {
+            checkAnswer(clickIndex);
+            };
+        }(index)); // Passing the index value using a closure
+      
+        choiceItem.appendChild(choiceButton);
+        choicesElement.appendChild(choiceItem);
+        }
+    } 
+    else {
+        endQuiz();
+    }
+}
 
   function checkAnswer(){
 
