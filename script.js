@@ -151,7 +151,16 @@ function showFeedback(){
 }
 
 function showExplosionAndEndQuiz(){
+    clearInterval(timerInterval);
+    timeLeft = 0;
+    updateTimerDisplay();
+    const explosionImage = document.getElementById("explosionImage");
+    explosionImage.style.display = "block";
 
+    setTimeout(function() {
+        explosionImage.style.display = "none";
+        endQuiz();
+    },5000);
 }
 
 function endQuiz() {
