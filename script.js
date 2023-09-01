@@ -140,7 +140,7 @@ function checkAnswer(selectedIndex){
     }
 }
 
-function showFeedback(){
+function showFeedback(message,color){
     const feedbackElement = document.createElement("p");
     feedbackElement.textContent = message;
     feedbackElement.style.color = color;
