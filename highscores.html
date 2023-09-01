@@ -4,11 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High scores</title>
+
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        ul{
+            list-style: none;
+            padding: 10px;
+            font-size: 20px;
+            background-color: blue;
+            color: white;
+            border-radius: 6px;
+        }
+        a{
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover{
+            color: red;
+        }
+
+    </style>
 </head>
 <body>
     <h1>High Scores</h1>
-    <div id="highScoresContainer">
-    </div>
+    <ul id="highScoresContainer"></ul>
+    <script>
+        const highScoresContainer = document.getElementById('highScoresContainer');
+        const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+        highScores.sort(function(a, b) {
+            return b.score - a.score;
+        });
+        highScores.forEach(function(scoreData) {
+            const listItem = document.createElement("li");
+            listItem.textContent = scoreData.initials + ": " + scoreData.score;
+            highScoresContainer.appendChild(listItem);
+        });
+    </script>
 
     <a href="index.html">Go Back</a>
 </body>

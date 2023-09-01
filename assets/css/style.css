@@ -43,16 +43,6 @@ input[type='text']{
     font-size: 20px;
 }
 
-#viewHighScores{
-    text-decoration: none;
-    color: blue;
-}
-
-#viewHighScores:hover{
-    text-decoration: none;
-    color: red;
-}
-
 #timer {
     position: absolute;
     top: 10px;
@@ -64,6 +54,13 @@ input[type='text']{
     position: absolute;
     top: 10px;
     left: 10px;
+    font-size:20px;
+    text-decoration: none;
+    color: blue;
+}
+
+#viewHighScores:hover{
+    color: red;
 }
 
 #quizContent,#quizContainer,#endContainer {
