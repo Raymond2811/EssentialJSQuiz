@@ -19,8 +19,7 @@
             list-style: none;
             padding: 10px;
             font-size: 20px;
-            background-color: blue;
-            color: white;
+            color: blue;
             border-radius: 6px;
         }
         a{
@@ -31,14 +30,30 @@
             color: red;
         }
 
+        .clear-button {
+            background-color: blue;
+            color: white;
+            font-size: 15px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .clear-button:hover {
+            background-color: red;
+        }
+
     </style>
 </head>
 <body>
     <h1>High Scores</h1>
     <ul id="highScoresContainer"></ul>
+
+   <button id="clearScoresBtn" class= "clear-button">Clear High Scores</button>
+
     <script>
         const highScoresContainer = document.getElementById('highScoresContainer');
         const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+        const clearScoresBtn = document.getElementById('clearScoresBtn');
 
         highScores.sort(function(a, b) {
             return b.score - a.score;
@@ -47,6 +62,14 @@
             const listItem = document.createElement("li");
             listItem.textContent = scoreData.initials + ": " + scoreData.score;
             highScoresContainer.appendChild(listItem);
+        });
+
+        clearScoresBtn.addEventListener("click", function() {
+            const confirmClear = confirm("Are you sure you want to clear the high scores?");
+            if (confirmClear) {
+                localStorage.removeItem("highScores");
+                window.location.reload();
+            }
         });
     </script>
 
